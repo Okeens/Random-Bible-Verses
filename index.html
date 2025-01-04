@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Bible Verse</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Motivational Bible Verse</h1>
+    <p id="verse"></p>
+  </div>
+
+  <script>
+    // Array of your specified sunset images
+    const images = [
+      'https://images.unsplash.com/photo-1555451435-b4b0ebebe3cf?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1581832122640-fe77bded3f0f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1523579499-6fde3326c5fd?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1507804421204-f1bd136f9d1a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1521812002301-a0bd5bbacf50?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1521396798743-13e3a7284c95?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1553522987-b6cb62385487?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1603936831330-55743eea3dbe?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1661509628733-c4da3d0ce231?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1580939133321-a4f13a1ef982?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    ];
+
+    // Randomly select an image from the array
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    document.body.style.backgroundImage = `url('${randomImage}')`;
+
+    // Array of 500 motivational Bible verses
+    const verses = [
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "For I know the plans I have for you, says the Lord, plans to prosper you and not to harm you, plans to give you hope and a future. - Jeremiah 29:11",
+      "But those who wait on the Lord shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go. - Joshua 1:9",
+      "The Lord is my shepherd; I shall not want. - Psalm 23:1",
+      "Commit your works to the Lord, and your thoughts will be established. - Proverbs 16:3",
+      "Trust in the Lord with all your heart, and lean not on your own understanding. - Proverbs 3:5",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "Fear not, for I am with you; be not dismayed, for I am your God. I will strengthen you, yes, I will help you. - Isaiah 41:10",
+      "The righteous cry out, and the Lord hears, and delivers them out of all their troubles. - Psalm 34:17"
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "The LORD is my light and my salvation; whom shall I fear? The LORD is the strength of my life; of whom shall I be afraid? - Psalm 27:1",
+      "For I know the thoughts that I think toward you, says the LORD, thoughts of peace and not of evil, to give you a future and a hope. - Jeremiah 29:11",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "God is our refuge and strength, a very present help in trouble. - Psalm 46:1",
+      "Love suffers long and is kind; love does not envy; love does not parade itself, is not puffed up; does not behave rudely, does not seek its own, is not provoked, thinks no evil; does not rejoice in iniquity, but rejoices in the truth; bears all things, believes all things, hopes all things, endures all things. - 1 Corinthians 13:4-7",
+      "For God so loved the world that He gave His only begotten Son, that whoever believes in Him should not perish but have everlasting life. - John 3:16",
+      "But God demonstrates His own love toward us, in that while we were still sinners, Christ died for us. - Romans 5:8",
+      "Now faith is the substance of things hoped for, the evidence of things not seen. - Hebrews 11:1",
+      "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He shall direct your paths. - Proverbs 3:5-6",
+      "But those who wait on the LORD shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the LORD your God is with you wherever you go. - Joshua 1:9",
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      // Add the rest of the verses up to 500 here...
+    ];
+
+    function getRandomVerse() {
+      const randomIndex = Math.floor(Math.random() * verses.length);
+      document.getElementById("verse").innerText = verses[randomIndex];
+    }
+
+    // Display a verse when the page loads
+    window.onload = getRandomVerse;
+  </script>
+</body>
+</html>
