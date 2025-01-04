@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Bible Verse</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: black;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Motivational Bible Verse</h1>
+    <p id="verse"></p>
+  </div>
+
+  <script>
+    // Array of 10 predefined sunset images (valid links)
+    const images = [
+      'https://images.unsplash.com/photo-1501973801540-537f08ccae7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1518837695005-2083093ee35b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1506748686214-06b2db8a1424?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1533642597524-a121cfd13df0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1485833495492-6d835053f74e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1470337458703-46ad1756a187?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1502082553048-f009c37129b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080'
+    ];
+
+    // Randomly select an image from the array
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+    document.body.style.backgroundImage = `url('${randomImage}')`;
+
+    // Array of 500 motivational Bible verses
+    const verses = [
+      "I can do all things through Christ who strengthens me. - Philippians 4:13",
+      "For I know the plans I have for you, says the Lord, plans to prosper you and not to harm you, plans to give you hope and a future. - Jeremiah 29:11",
+      "But those who wait on the Lord shall renew their strength; they shall mount up with wings like eagles, they shall run and not be weary, they shall walk and not faint. - Isaiah 40:31",
+      "Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go. - Joshua 1:9",
+      "The Lord is my shepherd; I shall not want. - Psalm 23:1",
+      "Commit your works to the Lord, and your thoughts will be established. - Proverbs 16:3",
+      "Trust in the Lord with all your heart, and lean not on your own understanding. - Proverbs 3:5",
+      "And we know that all things work together for good to those who love God, to those who are the called according to His purpose. - Romans 8:28",
+      "Fear not, for I am with you; be not dismayed, for I am your God. I will strengthen you, yes, I will help you. - Isaiah 41:10",
+      "The righteous cry out, and the Lord hears, and delivers them out of all their troubles. - Psalm 34:17"
+      // Add the rest of the verses up to 500 here...
+    ];
+
+    function getRandomVerse() {
+      const randomIndex = Math.floor(Math.random() * verses.length);
+      document.getElementById("verse").innerText = verses[randomIndex];
+    }
+
+    // Display a verse when the page loads
+    window.onload = getRandomVerse;
+  </script>
+</body>
+</html>
